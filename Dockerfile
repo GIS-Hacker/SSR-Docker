@@ -8,6 +8,10 @@ RUN set -ex && \
 
 WORKDIR /app
 
-COPY etc/config.json .
+COPY app/ .
+
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
 
 CMD ["ssserver", "-c", "config.json"]
